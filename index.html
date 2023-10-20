@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Especialista</title>
+</head>
+<body>
+    <h1>Filmes Brasileiros</h1>
+    <div class="container">
+        <div id="variaveis">
+            <h2>Variáveis</h2>
+            <input type="text" id="nomeVariavel" placeholder="Nome da Variável">
+            <input type="text" id="valorVariavel" placeholder="Valor da Variável">
+            <button onclick="adicionarVariavel()">Adicionar Variável</button>
+            <ul id="listaVariaveis"></ul>
+        </div>
+
+        <div id="regras">
+            <h2>Regras</h2>
+            <select id="selecionarVariavelRegra">
+                <option value="">Selecione a Variável</option>
+            </select>
+            <select id="selecionarValorRegra">
+                <option value="">Selecione o Valor</option>
+            </select>
+            <button onclick="adicionarRegra()">Adicionar Regra</button>
+            <ul id="listaRegras"></ul>
+        </div>
+
+        <button onclick="executarSistemaEspecialista()">Executar Sistema Especialista</button>
+
+        <div id="saida">
+            <h2>Resultado</h2>
+            <p id="resultado"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
