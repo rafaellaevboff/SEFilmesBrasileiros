@@ -1,12 +1,5 @@
-const variaveis = JSON.parse(sessionStorage.getItem('variaveis')) || {};
-const regras = JSON.parse(sessionStorage.getItem('regras')) || [];
-
-function carregarDadosDoSessionStorage() {
-  adicionarVariavel()
-  adicionarRegra()
-}
-
-window.onload = carregarDadosDoSessionStorage;
+const variaveis = [];
+const regras = [];
 
 function adicionarVariavel() {
   const nomeVariavel = document.getElementById("nomeVariavel").value;
@@ -17,13 +10,26 @@ function adicionarVariavel() {
         variaveis[nomeVariavel] = [];
     }
     variaveis[nomeVariavel].push(valorVariavel);
-    atualizarListaVariaveis();
     document.getElementById("nomeVariavel").value = "";
     document.getElementById("valorVariavel").value = "";
     atualizarSelecoesRegras();
   }
-  sessionStorage.setItem('variaveis', JSON.stringify(variaveis));
-  atualizarListaVariaveis();
+
+  fetch('http://localhost:3000/addvariable', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: nomeVariavel, value: valorVariavel }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+
 }
 
 function adicionarRegra() {
@@ -32,24 +38,27 @@ function adicionarRegra() {
   const nomeVariavel = selecionarVariavelRegra.value;
   const valorVariavel = selecionarValorRegra.value;
 
+  fetch('http://localhost:3000/addrule', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ variable: nomeVariavel, validation: valorVariavel }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+    });
+
   if (nomeVariavel && valorVariavel) {
       const regra = `${nomeVariavel} = ${valorVariavel}`;
       regras.push(regra);
       atualizarListaRegras();
   }
-  sessionStorage.setItem('regras', JSON.stringify(regras));
   atualizarListaRegras();
-}
-
-function atualizarListaVariaveis() {
-  const listaVariaveis = document.getElementById("listaVariaveis");
-  listaVariaveis.innerHTML = "";
-
-  for (const variavel in variaveis) {
-      const itemLista = document.createElement("li");
-      itemLista.textContent = `${variavel} = ${variaveis[variavel].join(', ')}`;
-      listaVariaveis.appendChild(itemLista);
-  }
 }
 
 function atualizarListaRegras() {
