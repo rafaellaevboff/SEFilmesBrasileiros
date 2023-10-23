@@ -27,8 +27,8 @@ app.get("/variables", (req, res) => {
 
 // Rota para adicionar uma regra
 app.post("/addrule", (req, res) => {
-    const { variable, validation } = req.body;
-    rules.push({ variable, validation });
+    const { regras } = req.body;
+    rules.push({ regras });
     res.status(201).json({ message: "Regra adicionada com sucesso" });
 });
 
@@ -40,3 +40,4 @@ app.get("/rules", (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor em execução na porta ${port}`);
 });
+

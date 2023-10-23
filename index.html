@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Especialista</title>
 </head>
-<body>
+
+<body onload="atualizarListaRegras()">
     <h1>Filmes Brasileiros</h1>
     <div class="container">
         <div id="variaveis">
@@ -24,6 +26,7 @@
             <select id="selecionarValorRegra">
                 <option value="">Selecione o Valor</option>
             </select>
+            <button onclick="adicionarValorRegra()">E</button>
             <button onclick="adicionarRegra()">Adicionar Regra</button>
             <ul id="listaRegras"></ul>
         </div>
@@ -38,4 +41,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
