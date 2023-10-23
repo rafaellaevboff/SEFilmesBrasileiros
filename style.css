@@ -55,6 +55,12 @@ input[type="text"] {
     align-items: center;
 }
 
+#botoesRegras {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
 #saida {
     margin-top: 20px;
 }
