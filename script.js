@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+let variaveis = [];
+>>>>>>> 7c6ea2bd17727624eb0d3f29b1d6a36e89a6c07d
 let regras = [];
 let regrasGet = [];
 const variaveis = {}; // Use an object to store variables
@@ -17,6 +21,7 @@ function adicionarVariavel() {
     atualizarSelecoesRegras();
     adicionarVariavelFetch(nomeVariavel, valorVariavel); // Remove this line, it's not needed
   }
+<<<<<<< HEAD
   // Remove the extra call to adicionarVariavel
 }
 
@@ -25,6 +30,15 @@ function adicionarVariavel() {
 function adicionarVariavelFetch(nomeVariavel, valorVariavel) {
   fetch("http://localhost:3000/addvariable", {
     method: "POST",
+=======
+
+  adicionarVariavelFetch(nomeVariavel, valorVariavel)
+}
+
+function adicionarVariavelFetch(nomeVariavel, valorVariavel) {
+  fetch('http://localhost:3000/addvariable', {
+    method: 'POST',
+>>>>>>> 7c6ea2bd17727624eb0d3f29b1d6a36e89a6c07d
     headers: {
       "Content-Type": "application/json",
     },
