@@ -1,4 +1,4 @@
-const variaveis = [];
+let variaveis = [];
 let regras = [];
 let montaRegra = []
 let regrasGet = []
@@ -17,10 +17,10 @@ function adicionarVariavel() {
     atualizarSelecoesRegras();
   }
 
-  adicionarVariavel(nomeVariavel, valorVariavel)
+  adicionarVariavelFetch(nomeVariavel, valorVariavel)
 }
 
-function adicionarVariavel(nomeVariavel, valorVariavel) {
+function adicionarVariavelFetch(nomeVariavel, valorVariavel) {
   fetch('http://localhost:3000/addvariable', {
     method: 'POST',
     headers: {
